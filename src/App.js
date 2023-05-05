@@ -9,7 +9,7 @@ import {Routes, Route} from 'react-router-dom';
 export default function App() {
   return (
     <div className="App">
-      <h1>pranita's mail box</h1>
+      <h1>pranita's mail</h1>
       <div className="email-body">
         <Header />
         <Routes>
