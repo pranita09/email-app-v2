@@ -17,6 +17,23 @@ const reducerFunction = (state, action) =>{
                 ...state,
                 mails: state.mails.map((mail)=> mail.mId===action.payload.mId ? {...mail, isStarred: !mail.isStarred} : mail)
             }
+        case 'UNREAD_TOGGLE':
+            return{
+                ...state,
+                mails: state.mails.map((mail)=> mail.mId===action.payload.mId ? {...mail, unread: !mail.unread} : mail)
+            }
+        case 'DELETE':
+            return{
+                ...state,
+                trash: [...state.trash, action.payload],
+                mails: state.mails.filter((mail)=> mail.mId!==action.payload.mId)
+            }
+        case 'REPORT_SPAM':
+            return{
+                ...state,
+                spam: [...state.spam, action.payload],
+                mails: state.mails.filter((mail)=> mail.mId!==action.payload.mId)
+            }
         default:
             return state
     }

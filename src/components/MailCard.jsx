@@ -16,9 +16,9 @@ const MailCard = ({mail}) =>{
                 <div>
                 <NavLink to={`/mail/${mId}`}>View Details</NavLink>
                 <div>
-                    <button>Delete</button>
-                    <button>Mark as {unread ? 'Read' : 'Unread'}</button>
-                    <button>Report Spam</button>
+                    <button onClick={()=> dispatch({type: 'DELETE', payload: mail})}>Delete</button>
+                    <button onClick={()=> dispatch({type: 'UNREAD_TOGGLE', payload: mail})}>Mark as {unread ? 'Read' : 'Unread'}</button>
+                    <button onClick={()=> dispatch({type: 'REPORT_SPAM', payload: mail})}>Report Spam</button>
                 </div>
             </div>
             }

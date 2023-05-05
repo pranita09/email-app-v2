@@ -1,4 +1,5 @@
 import { useMails } from "../context/mail-context";
+import MailCard from "../components/MailCard";
 
 const Trash = () =>{
     const {state} = useMails();
