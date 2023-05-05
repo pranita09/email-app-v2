@@ -9,13 +9,17 @@ import {Routes, Route} from 'react-router-dom';
 export default function App() {
   return (
     <div className="App">
-    <Header />
-      <Routes>
-        <Route path='/' element={<Inbox />}/>
-        <Route path='/spam' element={<Spam />}/>
-        <Route path='/trash' element={<Trash />}/>
-        <Route path='/mail/:mailId' element={<IndividualMail />} />
-      </Routes>
+      <h1>pranita's mail box</h1>
+      <div className="email-body">
+        <Header />
+        <Routes>
+          <Route path='/' element={<Inbox />}/>
+          <Route path='/spam' element={<Spam />}/>
+          <Route path='/trash' element={<Trash />}/>
+          <Route path='/mail/:mailId' element={<IndividualMail />} />
+        </Routes>
+      </div>
+    
     </div>
   );
 }

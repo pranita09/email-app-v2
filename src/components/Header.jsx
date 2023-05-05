@@ -3,14 +3,18 @@ import { useMails } from "../context/mail-context";
 
 const Header = () =>{
     const {state} = useMails();
+
+    const activeStyles = ({isActive}) => ({
+        backgroundColor: isActive ? 'tomato' : '',
+        boxShadow: isActive ? '0 0 5px' : 'none',
+    })
     
     return(
-        <>
-            <h1>pranita's mail box</h1>
-            <NavLink to='/'>Inbox</NavLink> || 
-            <NavLink to='/spam'> Spam({state.spam.length})</NavLink> || 
-            <NavLink to='/trash'> Trash({state.trash.length})</NavLink> 
-        </>
+        <div className="navlinks">
+            <NavLink className='navlink' style={activeStyles} to='/'>Inbox</NavLink> 
+            <NavLink className='navlink' style={activeStyles} to='/spam'> Spam({state.spam.length})</NavLink>
+            <NavLink className='navlink' style={activeStyles} to='/trash'> Trash({state.trash.length})</NavLink> 
+        </div>
     )
 }
 

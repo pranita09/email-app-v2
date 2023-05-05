@@ -2,11 +2,11 @@ import MailCard from "../components/MailCard";
 import { useMails } from "../context/mail-context";
 
 const Spam = () =>{
-    const {state, dispatch, filteredSpamMails} = useMails();
+    const {dispatch, filteredSpamMails} = useMails();
     return(
-        <>
+        <div className="all-mails">
             {
-                state.spam.length === 0
+                filteredSpamMails.length === 0
                     ? <h2>Spam is empty!</h2> 
                         : <>
                             <fieldset>
@@ -23,7 +23,7 @@ const Spam = () =>{
                             ))}
                         </>
             }
-        </>
+        </div>
     )
 }
 

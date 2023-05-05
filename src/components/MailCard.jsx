@@ -5,17 +5,17 @@ const MailCard = ({mail, trashAdded, spamAdded}) =>{
     const {dispatch} = useMails();
     const {mId, unread, isStarred, subject, content} = mail;
     return(
-        <div>
-            <div>
+        <div className="mailcard" style={{backgroundColor: unread ? 'lightgrey' : 'white'}}>
+            <div className="sub-btn">
                 <h3>Subject: {subject}</h3>
-                <button onClick={()=> dispatch({type: 'STAR_TOGGLE', payload: mail})}>{isStarred ? 'Unstar' : 'Star' }</button>
+                <div><button onClick={()=> dispatch({type: 'STAR_TOGGLE', payload: mail})}>{isStarred ? 'Unstar' : 'Star' }</button></div>
             </div>
             <p>{content}</p>
             {
                 mail && 
-                <div>
+                <div className='details-btns'>
                 <NavLink to={`/mail/${mId}`}>View Details</NavLink>
-                <div>
+                <div className="btns">
                     { !trashAdded && <button onClick={()=> dispatch({type: 'DELETE', payload: mail})}>Delete</button>}
                     { trashAdded && <button onClick={()=> dispatch({type: 'RESTORE_FROM_TRASH', payload: mail})} >Restore</button> }
                     <button onClick={()=> dispatch({type: 'UNREAD_TOGGLE', payload: mail})}>Mark as {unread ? 'Read' : 'Unread'}</button>

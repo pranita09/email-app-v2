@@ -1,4 +1,61 @@
 .App {
   font-family: sans-serif;
+}
+.App h1{
   text-align: center;
+}
+.email-body{
+  display: flex;
+}
+.navlinks{
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 5px;
+  margin: 0 1rem;
+  background-color: #d7e4f7;
+  height: 100vh;
+}
+.navlink{
+  padding: 0.8rem 2rem;
+  text-decoration: none;
+  color: black;
+  margin: 5px 0;
+}
+.all-mails{
+  margin: 0 0 0 1rem;
+  flex: 1;
+}
+fieldset{
+  padding: 1rem;
+  border-radius: 0 10px 0 10px;
+}
+.mailcard{
+  padding: 1rem;
+  margin: 10px 0;
+  box-shadow: 0 0 5px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.mailcard p{
+  overflow: hidden;
+  height:20px;
+}
+.mailcard p::after{
+  content: '...';
+  display: inline-block;
+}
+.sub-btn{
+  display: flex;
+  justify-content: space-between;
+}
+.details-btns{
+  display: flex;
+  justify-content: space-between;
+}
+.btns{
+  display: flex;
+  gap: 8px;
 }

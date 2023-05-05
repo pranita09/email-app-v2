@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
 import { useMails } from "../context/mail-context";
-import MailCard from "../components/MailCard";
 
 const IndividualMail = () =>{
     const {mailId} = useParams();
