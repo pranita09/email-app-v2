@@ -12,12 +12,12 @@ const IndividualMail = () =>{
     const selectedMail = inboxMail ?? spamMail ?? trashMail
 
     return(
-        <>
-            <div>
+        <div className="all-mails">
+            <div className="single-mail">
                 <h3>Subject: {selectedMail.subject}</h3>
                 <p>{selectedMail.content}</p>
             </div>
-        </>
+        </div>
     )
 }
 export default IndividualMail;

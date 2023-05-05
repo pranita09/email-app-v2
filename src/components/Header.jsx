@@ -5,7 +5,7 @@ const Header = () =>{
     const {state} = useMails();
 
     const activeStyles = ({isActive}) => ({
-        backgroundColor: isActive ? 'tomato' : '',
+        backgroundColor: isActive ? '#95dfed' : '',
         boxShadow: isActive ? '0 0 5px' : 'none',
     })
     
