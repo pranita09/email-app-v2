@@ -2,7 +2,7 @@ import MailCard from "../components/MailCard";
 import { useMails } from "../context/mail-context";
 
 const Inbox = () => {
-  const { state, dispatch, filteredMails } = useMails();
+  const { state, dispatch, filteredInboxMails } = useMails();
 
   return (
     <>
@@ -16,7 +16,7 @@ const Inbox = () => {
             <input type="checkbox" onChange={()=> dispatch({type: 'FILTER', payload: 'isStarred'})}/>Show starred emails
         </label>
       </fieldset>
-      {filteredMails?.map((mail) => (
+      {filteredInboxMails?.map((mail) => (
         <div key={mail.mId}>
           <MailCard mail={mail} />
         </div>

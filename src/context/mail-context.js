@@ -66,12 +66,20 @@ export const MailProvider = ({children}) =>{
 
     const [state, dispatch] = useReducer(reducerFunction, initialState);
 
-    const filteredMails = state.checkboxInput.length > 0 
+    const filteredInboxMails = state.checkboxInput.length > 0 
         ? state.mails.filter(mail => state.checkboxInput.every(checkType => mail[checkType])) 
-            : state.mails
+            : state.mails;
+    
+    const filteredSpamMails = state.checkboxInput.length > 0
+        ? state.spam.filter((mail)=> state.checkboxInput.every(checkType => mail[checkType])) 
+            : state.spam;
+
+    const filteredTrashMails = state.checkboxInput.length > 0
+        ? state.trash.filter((mail)=> state.checkboxInput.every(checkType => mail[checkType]))
+            : state.trash;
 
     return(
-        <MailContext.Provider value={{state, dispatch, filteredMails}}>
+        <MailContext.Provider value={{state, dispatch, filteredInboxMails, filteredSpamMails, filteredTrashMails}}>
             {children}
         </MailContext.Provider>
     )

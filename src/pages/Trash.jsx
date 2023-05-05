@@ -2,15 +2,28 @@ import { useMails } from "../context/mail-context";
 import MailCard from "../components/MailCard";
 
 const Trash = () =>{
-    const {state} = useMails();
+    const {state, dispatch, filteredTrashMails} = useMails();
     return(
         <>
             {
                 state.trash.length === 0
                     ? <h2>Trash is empty!</h2> 
-                        : state.trash.map((mail)=>(
-                            <MailCard mail={mail} trashAdded/>
-                        ))
+                        : <>
+                            <fieldset>
+                                <legend>Filters</legend>
+                                <label>
+                                    <input type='checkbox' onChange={()=> dispatch({type: 'FILTER', payload: 'unread'})}/> Show unread emails
+                                </label>
+                                <label>
+                                    <input type='checkbox' onChange={()=> dispatch({type: 'FILTER', payload: 'isStarred'})}/> Show starred emails
+                                </label>
+                            </fieldset>
+                            {
+                                filteredTrashMails.map((mail)=>(
+                                    <MailCard mail={mail} trashAdded/>
+                                ))
+                            }
+                        </>
             }
         </>
     )
