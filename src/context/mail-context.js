@@ -15,12 +15,16 @@ const reducerFunction = (state, action) =>{
         case "STAR_TOGGLE": 
             return {
                 ...state,
-                mails: state.mails.map((mail)=> mail.mId===action.payload.mId ? {...mail, isStarred: !mail.isStarred} : mail)
+                mails: state.mails.map((mail)=> mail.mId===action.payload.mId ? {...mail, isStarred: !mail.isStarred} : mail),
+                spam: state.spam.map((mail)=> mail.mId===action.payload.mId ? {...mail, isStarred: !mail.isStarred} : mail),
+                trash: state.trash.map((mail)=> mail.mId===action.payload.mId ? {...mail, isStarred: !mail.isStarred} : mail)
             }
         case 'UNREAD_TOGGLE':
             return{
                 ...state,
-                mails: state.mails.map((mail)=> mail.mId===action.payload.mId ? {...mail, unread: !mail.unread} : mail)
+                mails: state.mails.map((mail)=> mail.mId===action.payload.mId ? {...mail, unread: !mail.unread} : mail),
+                spam: state.spam.map((mail)=> mail.mId===action.payload.mId ? {...mail, unread: !mail.unread} : mail),
+                trash: state.trash.map((mail)=> mail.mId===action.payload.mId ? {...mail, unread: !mail.unread} : mail)
             }
         case 'DELETE':
             return{
@@ -33,6 +37,18 @@ const reducerFunction = (state, action) =>{
                 ...state,
                 spam: [...state.spam, action.payload],
                 mails: state.mails.filter((mail)=> mail.mId!==action.payload.mId)
+            }
+        case 'RESTORE_FROM_TRASH':
+            return{
+                ...state,
+                mails: [action.payload, ...state.mails],
+                trash: state.trash.filter((mail)=> mail.mId!==action.payload.mId)
+            }
+        case 'RESTORE_FROM_SPAM':
+            return{
+                ...state,
+                mails: [action.payload, ...state.mails],
+                spam: state.spam.filter((mail)=> mail.mId!==action.payload.mId)
             }
         default:
             return state
