@@ -4,14 +4,20 @@ import MailCard from "../components/MailCard";
 
 const IndividualMail = () =>{
     const {mailId} = useParams();
-    const {state} = useMails();
+    const {state: {mails, spam, trash}} = useMails();
 
-    const findMail = state.mails?.find(mail=> mail.mId ===(mailId));
+    const inboxMail = mails?.find(mail=> mail.mId ===mailId);
+    const spamMail = spam?.find(mail => mail.mId === mailId);
+    const trashMail = trash?.find(mail => mail.mId === mailId)
+
+    const selectedMail = inboxMail ?? spamMail ?? trashMail
 
     return(
         <>
-            <h2>Individual Mail</h2>
-            <MailCard mail={findMail}/>
+            <div>
+                <h3>Subject: {selectedMail.subject}</h3>
+                <p>{selectedMail.content}</p>
+            </div>
         </>
     )
 }
