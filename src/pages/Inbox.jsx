@@ -2,7 +2,7 @@ import MailCard from "../components/MailCard";
 import { useMails } from "../context/mail-context";
 
 const Inbox = () => {
-  const { dispatch, filteredInboxMails } = useMails();
+  const {state, dispatch, filteredInboxMails } = useMails();
   const unreadCount = filteredInboxMails.reduce((acc, {unread})=> unread ? acc+1 : acc,0);
   return (
     <div className="all-mails">

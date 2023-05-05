@@ -2,11 +2,11 @@ import { useMails } from "../context/mail-context";
 import MailCard from "../components/MailCard";
 
 const Trash = () =>{
-    const {dispatch, filteredTrashMails} = useMails();
+    const {state, dispatch, filteredTrashMails} = useMails();
     return(
         <div className="all-mails">
             {
-                filteredTrashMails.length === 0
+                state.trash.length === 0
                     ? <h2>Trash is empty!</h2> 
                         : <>
                             <fieldset>
