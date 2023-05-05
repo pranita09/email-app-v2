@@ -30,13 +30,15 @@ const reducerFunction = (state, action) =>{
             return{
                 ...state,
                 trash: [...state.trash, action.payload],
-                mails: state.mails.filter((mail)=> mail.mId!==action.payload.mId)
+                mails: state.mails.filter((mail)=> mail.mId!==action.payload.mId),
+                spam: state.spam.filter((mail)=> mail.mId!==action.payload.mId)
             }
         case 'REPORT_SPAM':
             return{
                 ...state,
                 spam: [...state.spam, action.payload],
-                mails: state.mails.filter((mail)=> mail.mId!==action.payload.mId)
+                mails: state.mails.filter((mail)=> mail.mId!==action.payload.mId),
+                trash: state.trash.filter((mail)=> mail.mId!==action.payload.mId)
             }
         case 'RESTORE_FROM_TRASH':
             return{
